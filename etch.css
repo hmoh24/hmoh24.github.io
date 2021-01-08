@@ -103,6 +103,7 @@ h1 {
     grid-row: 2/3;
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 200px;
     height: 500px;
     background-color: turquoise;
@@ -122,6 +123,8 @@ button {
     color: turquoise;
     box-shadow: 0px 0px 5px white;
     font-weight: bold;
+    height: 40px;
+    width: 200px;
     margin: 10px 0px;
     padding: 0.5rem;
     font-family: Arial, Helvetica, sans-serif;
@@ -133,22 +136,21 @@ button:active {
     box-shadow: 0px 0px 15px white;
 }
 
-button:visited {
-    background-color: white;
-    color: turquoise;
+button:focus {
+    outline: none;
 }
 
 #gridinput {
     color: pink;
     border-color: red;
     margin: 10px 0px;
+    width: 200px;
 }
 
 
 
 label {
     color: white;
-    margin-left: 65px;
     margin-bottom: 15px;
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
@@ -160,13 +162,16 @@ label {
     margin: 10px 0px;
     border: none;
     padding: 10px;
-    width: 200px;
+    width: 100px;
     height: 40px;
+}
+
+#colorInput:focus {
+    outline: none;
 }
 
 #selectorinput {
     margin-top: 5px;
-    margin-left: 40px;
 }
 
 
