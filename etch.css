@@ -52,7 +52,7 @@ html {
 
 body {
     display: grid;
-    grid-template-columns: 3fr 2fr 3fr 2fr;
+    grid-template-columns: 1fr 1fr 1fr ;
     grid-template-rows: 1fr 2fr;
     
 }
@@ -85,7 +85,8 @@ h1 {
     background-color: white;
     display: flex;
     flex-flow: row wrap;
-    grid-column: 3/4;
+    justify-self: center;
+    grid-column: 2/3;
     grid-row: 2/3;
     border-style: outset;
     border-color: white;
@@ -99,11 +100,13 @@ h1 {
 }
 
 #buttonHolder {
-    grid-column: 2/3;
+    grid-column: 1/2;
     grid-row: 2/3;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-self: center;
+    margin-left: 300px;
     width: 200px;
     height: 500px;
     background-color: turquoise;
@@ -174,6 +177,45 @@ label {
     margin-top: 5px;
 }
 
+#textbox {
+    grid-column: 3/4;
+    grid-row: 2/3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+    width: 200px;
+    height: 500px;
+    margin-right: 300px;
+    background-color: turquoise;
+    border-radius: 5px;
+    padding: 0.5rem;
+    border-color: white;
+    border-style: solid;
+    border-width: 2.5px;
+    box-shadow: 0px 0px 5px white;
+}
+
+h2 {
+    color: white;
+    font-size: 20px;
+    margin-bottom: 30px;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+li {
+    color: white;
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    margin-bottom: 50px;
+}
+
+ul {
+    list-style: inside square;
+}
 
 /* problem with zooming which break etch screen 
 add class to DOM when button is clicked on have same properties as visited psuedoclass*/

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><link rel='stylesheet' href='etch.css'></head>
+
+<body>
+    <div id='headerbox'>
+        <h1>Etch-A-Sketch</h1>
+    </div>
+    <div id='buttonHolder'>
+        <button id='clear'>Clear All</button>
+        <input type='range' id='gridinput' name='gridSize' min='10' max='100' step='10'> 
+        <label for='gridinput'>Grid Size</label>
+        <button id='shade'>Pencil</button>
+        <button id='black'>Black</button>
+        <button id='select'>Random colour</button>
+        <button id='rainbow'>Rainbow</button>
+        <input type='color' id='colorInput' name='color' value='Color'>
+        <label for='color' id='selectorinput'>Colour selector</label>
+    </div>
+    <div id='divcontainer'></div>
+    <div id='textbox'>
+        <h2>Instructions:</h2>
+        <ul>
+            <li>Click on the etch screen to begin.</li>
+            <li>If you choose the random colour button, clicking on the etch screen changes the colour each time!</li>
+            <li>Drag the slider to change the grid size of the etch screen.</li>
+            <li>Have fun!</li>
+        </ul>
+    </div>
+</body>
+
+<script>
+    let divContainer = document.querySelector('#divcontainer');
+    let range = document.querySelector('#gridinput');
+    console.log(range.value);
+    let gridSize = 50;
+    for (i=0; i < gridSize*gridSize; i++) {
+        let newDiv = document.createElement('div');
+        divContainer.appendChild(newDiv);
+        newDiv.classList = 'etchboxes';                             
+        newDiv.style.width = ((500) / gridSize) + 'px';
+        newDiv.style.height = ((500) / gridSize) + 'px';
+    };
+
+    
+    range.addEventListener('change', function() {
+        while (divContainer.lastElementChild) {
+            divContainer.removeChild(divContainer.lastElementChild);
+        }
+        let size = range.value;
+
+        for (i=0; i < size*size; i++) {
+        let newDiv = document.createElement('div');
+        divContainer.appendChild(newDiv);
+        newDiv.classList = 'etchboxes';                             
+        newDiv.style.width = ((500) / size) + 'px';
+        newDiv.style.height = ((500) / size) + 'px';
+    };
+
+    });
+    
+    
+    
+    
+
+    var pen = 'shade';
+
+    let clearButton = document.querySelector('#clear');
+    clearButton.addEventListener('click', function() {
+        let gridBoxes = divContainer.getElementsByClassName('etchboxes');
+        let gridBoxesArr = Array.from(gridBoxes);
+        gridBoxesArr.forEach(function(item){
+            item.style.backgroundColor = 'transparent';
+            item.style.opacity = 0;
+            item.removeAttribute('data-shader');
+        })
+
+        // for (i=0; i < size*size; i++){
+        // gridBoxesArr[i].style.backgroundColor = 'transparent';
+        // gridBoxesArr[i].style.opacity = 0;
+        // gridBoxesArr[i].removeAttribute('data-shader');
+        // }
+        // console.log(size);
+    });
+
+    let blackButton = document.querySelector('#black');
+    blackButton.addEventListener('click', function(){
+        pen = 'black';
+    });
+    
+    let randomColorButton = document.querySelector('#select');
+    randomColorButton.addEventListener('click', function(){
+        pen = 'random';
+    });
+
+    let shadeButton = document.querySelector('#shade');
+    shadeButton.addEventListener('click', function(){
+        pen = 'shade';
+    });
+
+    let colorSelectorButton = document.querySelector('#colorInput');
+    colorSelectorButton.addEventListener('click', function(){
+        pen = 'select';
+    });
+
+    let rainbowButton = document.querySelector('#rainbow');
+    rainbowButton.addEventListener('click', function(){
+        pen = 'rainbow';
+    });
+
+    divContainer.addEventListener('click', function(){
+        let color = '#'+Math.random().toString(16).substr(2,6);
+        divContainer.addEventListener('mouseover', function(e){
+            
+            if (e.target && e.target.matches('.etchboxes')){
+                if (pen === 'black') {
+                    e.target.style.backgroundColor = 'black';
+                    e.target.style.opacity = 1;
+                    e.target.setAttribute('data-shader', 'on')                    
+                }
+                else if (pen == 'random') {
+                    e.target.style.backgroundColor = color;
+                    e.target.style.opacity = 1;
+                    e.target.removeAttribute('data-shader')
+                }
+               
+                else if (pen == 'select') {
+                    e.target.style.backgroundColor = colorSelectorButton.value;
+                    e.target.style.opacity = 1;
+                    e.target.removeAttribute('data-shader')
+                }
+                else if (pen == 'shade' && e.target.style.opacity < 1) {
+                    e.target.style.opacity = Number(e.target.style.opacity) + 0.1 + '';
+                    e.target.style.backgroundColor = 'black';
+                    e.target.setAttribute('data-shader', 'on')
+                }
+                else if (pen == 'rainbow') {
+                    e.target.style.backgroundColor = '#'+Math.random().toString(16).substr(2,6);
+                    e.target.style.opacity = 1;
+                    e.target.removeAttribute('data-shader')
+                }
+                else {let pen = 'shade'}
+            }
+            if (e.target && e.target.matches('.etchboxes') && e.target.getAttribute('data-shader') !== 'on' && pen == 'shade') {
+                        e.target.style.backgroundColor = 'black';
+                        e.target.style.opacity = 0.1;
+                        }
+
+        });
+
+    });
+
+</script>
+<html>
