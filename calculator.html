@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<head>
+    <link rel='stylesheet' href='calculator.css'>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <div id='holder'>
+        <div id='calculator'>
+            <div id='screen'>
+                <p id='storedNumber'></p>
+                <p id='screenNumber'></p>
+            </div>
+            <div id='buttons'>
+                <button id='factorial'>x!</button>
+                <button id='exponent'>x^n</button>
+                <button id='clear'>Clear</button>
+                <button id='remove'>Remove</button>
+                <button id='seven'>7</button>
+                <button id='eight'>8</button>
+                <button id='nine'>9</button>
+                <button id='divide'>÷</button>
+                <button id='four'>4</button>
+                <button id='five'>5</button>
+                <button id='six'>6</button>
+                <button id='minus'>-</button>
+                <button id='one'>1</button>
+                <button id='two'>2</button>
+                <button id='three'>3</button>
+                <button id='add'>+</button>
+                <button id='zero'>0</button>
+                <button id='decimal'>.</button>
+                <button id='multiply'>X</button>
+                <button id='equals'>=</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+
+    let sum;
+    function operation(a,b){
+        if (operator == 'minus'){
+            sum = (a - b);
+        }
+        else if (operator == 'add'){
+            sum = a + b;
+        }
+        else if (operator == 'multiply'){
+            sum = a * b;
+        }
+        else if (operator == 'divide') {
+            sum = (a / b);
+        }
+        else if (operator == 'none') {
+            console.log('Choose an operator!')
+        }
+        console.log(a);
+        console.log(b);
+        return sum;
+    }
+
+
+    
+    let screenNumber = document.querySelector('#screenNumber');
+
+    let nineButton = document.querySelector('#nine');
+    nineButton.addEventListener('click', function(){
+        screenNumber.textContent += '9';
+    });
+    let eightButton = document.querySelector('#eight');
+    eightButton.addEventListener('click', function(){
+        screenNumber.textContent += '8';
+    });
+    let sevenButton = document.querySelector('#seven');
+    sevenButton.addEventListener('click', function(){
+        screenNumber.textContent += '7';
+    });
+    let sixButton = document.querySelector('#six');
+    sixButton.addEventListener('click', function(){
+        screenNumber.textContent += '6';
+    });
+    let fiveButton = document.querySelector('#five');
+    fiveButton.addEventListener('click', function(){
+        screenNumber.textContent += '5';
+    });
+    let fourButton = document.querySelector('#four');
+    fourButton.addEventListener('click', function(){
+        screenNumber.textContent += '4';
+    });
+    let threeButton = document.querySelector('#three');
+    threeButton.addEventListener('click', function(){
+        screenNumber.textContent += '3';
+    });
+    let twoButton = document.querySelector('#two');
+    twoButton.addEventListener('click', function(){
+        screenNumber.textContent += '2';
+    });
+    let oneButton = document.querySelector('#one');
+    oneButton.addEventListener('click', function(){
+        screenNumber.textContent += '1';
+    });
+    let zeroButton = document.querySelector('#zero');
+    zeroButton.addEventListener('click', function(){
+        screenNumber.textContent += '0';
+    });
+
+    // decimal has to be a special case, must limit to one decimal per 'phrase'//
+    let decimalButton = document.querySelector('#decimal');
+    decimalButton.addEventListener('click', function(){
+        if ( screenNumber.textContent.includes('!') || screenNumber.textContent.includes('.')){
+        screenNumber.textContent += '';
+        }
+        else {screenNumber.textContent += '.';}
+    });
+
+    let clearButton = document.querySelector('#clear');
+    clearButton.addEventListener('click', function(){
+        screenNumber.textContent = '';
+        storedScreenNumber.textContent = '';
+        sum = '';
+        number1 = '';
+        number2 = '';
+    });
+
+    let removeButton = document.querySelector('#remove');
+    removeButton.addEventListener('click', function(){
+        screenNumber.textContent = screenNumber.textContent.slice(0, -1);
+    });
+
+
+
+    var storedScreenNumber = document.querySelector('#storedNumber')
+    var operator = 'none';
+
+    let addButton = document.querySelector('#add')
+    addButton.addEventListener('click', function(){
+            // operator = 'add';
+            execute();
+            storedScreenNumber.textContent = screenNumber.textContent + ' +';
+            screenNumber.textContent = '';
+            console.log(operator);
+    });
+    
+    let minusButton = document.querySelector('#minus')
+    minusButton.addEventListener('click', function(){
+        // operator = 'minus';
+        execute();
+        storedScreenNumber.textContent = screenNumber.textContent + ' -';;
+        screenNumber.textContent = '';
+        console.log(operator);
+    });
+
+    let multiplyButton = document.querySelector('#multiply')
+    multiplyButton.addEventListener('click', function(){
+        // operator = 'multiply';
+        execute();
+        storedScreenNumber.textContent = screenNumber.textContent + ' *';;
+        screenNumber.textContent = '';
+        console.log(operator);
+    });
+
+    let divideButton = document.querySelector('#divide')
+    divideButton.addEventListener('click', function(){
+        // operator = 'divide';
+        execute();
+        storedScreenNumber.textContent = screenNumber.textContent + ' ÷';;
+        screenNumber.textContent = '';
+        console.log(operator);
+    });
+
+
+    let number1;
+    let number2;
+    console.log(operator);
+
+    function execute(){
+        
+        if (storedScreenNumber.textContent.includes('*')){
+            operator = 'multiply';
+        }
+        else if (storedScreenNumber.textContent.includes('÷')){
+            operator = 'divide';
+        }
+        else if (storedScreenNumber.textContent.includes('+')){
+            operator = 'add';
+        }
+        else if (storedScreenNumber.textContent.includes('-')){
+            operator = 'minus';
+        }
+        else {
+            operator = 'none';
+        }
+
+        if (storedScreenNumber.textContent == ''){
+            number1 = 1;
+        }
+
+        if (screenNumber.textContent.includes('^') && screenNumber.textContent.length > 1){
+            let x = Array.from(screenNumber.textContent);
+            let y = x.slice((x.indexOf('^')));
+            x.splice(x.indexOf('^'));
+            y.shift();
+            number2 = Math.pow(parseFloat((x.join(''))), parseFloat((y.join(''))));
+        }
+        
+        else if (screenNumber.textContent.includes('!') && screenNumber.textContent.length > 1){
+            let x = parseFloat(screenNumber.textContent);
+            let z = 1;
+            if (Math.round(x === 0) || Math.round(x === 1)){           //math.round used since we need proper rounding for factorials
+                    z = 1;
+                }
+            else if(Math.round(x) > 1){    
+                for (i=1; i <= Math.round(x); i++){
+                    z *= i;
+                }
+            }
+            else if(Math.round(x) < 0){
+                screenNumber.textContent = 'Positive integer required for factorial';
+            }
+            number2 = z
+        }
+        
+        else {number2 = parseFloat(screenNumber.textContent);}
+
+        
+        if (storedScreenNumber.textContent.includes('^')){
+            let x = Array.from(storedScreenNumber.textContent);
+            let y = x.slice((x.indexOf('^')));
+            x.splice(x.indexOf('^'));
+            y.pop();
+            y.pop();
+            y.shift();
+            number1 = Math.pow(parseFloat((x.join(''))), parseFloat((y.join(''))));
+        }
+
+        else if (storedScreenNumber.textContent.includes('!')){
+            let x = parseFloat(storedScreenNumber.textContent);
+            let z = 1;
+            if (Math.round(x)===0 || Math.round(x) === 1){
+                    z = 1;
+                }
+            else if(Math.round(x) > 1){    
+                for (i=1; i <= Math.round(x); i++){
+                    z *= i;
+                }
+            }
+            else if(Math.round(x) < 0){
+                storedScreenNumber.textContent = 'Positive integer required for factorial';
+            }
+            number1 = z
+        }
+        else {number1 = parseFloat(storedScreenNumber.textContent);};
+
+        console.log('number 1 is' + number1);
+        console.log('number 2 is' + number2);
+        operation(number1, number2);
+        storedScreenNumber.textContent = '';
+
+        if((number1 == Infinity || number2 == Infinity) && typeof sum !== Number){
+            alert('Resulting value is too large.');
+            screenNumber.textContent = '1';
+            number1 = '1';
+            number2 = '1';
+            sum = '';
+        }
+
+        if((isNaN(number1) == true) && screenNumber.textContent.includes('^')){
+            screenNumber.textContent = (Math.round(number2 * 1000000) / 1000000);
+        }
+        else if(((isNaN(number1) == true)) && (isNaN(number2)) == false && (number2 !== Infinity)) {
+            screenNumber.textContent = (Math.round(number2 * 1000000) / 1000000);
+        }
+        else if( (screenNumber.textContent == '!') && (screenNumber.textContent.length == 1) ){
+            screenNumber.textContent = '';
+        }
+        else {screenNumber.textContent = (Math.round(sum * 1000000) / 1000000);}
+
+        if ((sum == undefined && isNaN(number2) == true) || (isNaN(sum) && (isNaN(number2)) == true) || (isNaN(number1) && (isNaN(number2)))){
+            alert('Math Error');
+            screenNumber.textContent = '';
+        }
+    }
+
+    function NaNCheck(){
+        if(screenNumber.textContent == NaN){
+            alert('Math Error');
+            screenNumber.textContent = '';
+        }
+    };
+
+
+    let equalsButton = document.querySelector('#equals')
+    equalsButton.addEventListener('click', function(){
+        execute();
+        NaNCheck();
+        console.log('sum is' + ' ' + sum);
+    });
+
+
+    let exponentButton = document.querySelector('#exponent');
+    exponentButton.addEventListener('click', function(){
+        let number1 = parseFloat(screenNumber.textContent);
+        if (screenNumber.textContent.includes('^') || screenNumber.textContent.includes('!')){
+        screenNumber.textContent += '';
+        }
+        else {screenNumber.textContent += '^';}
+    });
+
+    let factorialButton = document.querySelector('#factorial');
+    factorialButton.addEventListener('click', function(){
+        if (screenNumber.textContent.includes('!') || screenNumber.textContent.includes('^') || screenNumber.textContent.includes('.')){
+        screenNumber.textContent += '';
+        }
+        else {screenNumber.textContent += '!';}
+    });
+
+
+
+//note to include: factorial will round your number to closest integer
+
+//note for self: power and then number still gives NaN, need to fix
+
+
+
+</script>
