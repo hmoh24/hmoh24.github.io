@@ -1,38 +1,39 @@
 html {
-    background-color: whitesmoke;
+    background-color: #647C90;
     font-family: Arial, Helvetica, sans-serif;
     /* font-weight: bolder; */
 }
 
 #calculator {
-    background-color: turquoise;
-    height: 500px;
-    width: 300px;
+    background-color: #EEEDE7;
+    height: 435px;
+    width: 270px;
     margin-left: 40%;
     margin-top: 10%;
-    border: 5px solid white;
-    border-radius: 5%;
-    padding: 15px;
-    box-shadow: 5px 5px 3px black;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    /* border: 5px solid white; */
+    /* border-radius: 5%; */
+    /* padding: 15px; */
+    /* box-shadow: 5px 5px 3px black; */
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: 130px auto;
+    grid-template-rows: auto auto;
     justify-items: center;
 }
 
 p {
-    color:rgb(2, 252, 98);
+    color:#868B8E;
     font-weight: bolder;
     font-size: 20px;
 }
 
 #screen {
-    background-color: rgb(17, 59, 59);
+    background-color: rgb(214, 218, 218);
     height: 100px;
-    width: 280px;
-    padding-top: 10px;
-    padding-left: 10px;
-    box-shadow: inset 0px 0px 5px 0px rgb(2, 252, 98);
+    width: 250px;
+    /* padding-top: 10px;
+    padding-left: 10px; */
     margin-bottom: 10px;
     grid-row: 1/2;
     display: flex;
@@ -45,26 +46,36 @@ p {
 #buttons {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content:center;
 }
 
 button {
-    background-color: turquoise;
-    border: 2px solid white;
-    box-shadow: 0 4px #999;
-    height: 65px;
+    background-color: #EEEDE7;
+    border: 0px;;
+    /* box-shadow: 0 4px #999; */
+    height: 60px;
     width: 60px;
-    margin: 4px;
     font-size: 19px;
     padding: 0px;
+    border-radius: 50%;
+    margin: 2px;
 }
 
-#remove {
-    font-size: 13px;
+.color1 {
+    background-color: #868B8E;
+    color: white;
+}
+.color2 {
+    background-color: #B9B7BD;
+    color: white;
+}
+.color3 {
+    background-color: #E7D2CC;
+    color: white;
 }
 
 button:hover {
-    background-color: rgb(61, 196, 182);
+    background-color: #647C90;
 }
 button:focus{
     outline: none;
@@ -72,9 +83,10 @@ button:focus{
 
 button:active{
     /* box-shadow: 0px 0px 5px orange; */
-    background-color: rgb(61, 196, 182);
+    /* background-color: rgb(61, 196, 182);
     transform: translateY(2px);
-    box-shadow: 0 2px rgb(65, 64, 64);
+    box-shadow: 0 2px rgb(65, 64, 64); */
+    transform: translateY(2px);
 }
 
 #screenNumber {
@@ -83,10 +95,11 @@ button:active{
     height: 25px;
     margin-top: 10px;
     margin-right: 15px;
+    margin-left: 5px;
 }
 
 #storedNumber {
-    font-size: 10px;
+    font-size: 13px;
     width: auto;
     height: 15px;
     margin-top: 7px;
