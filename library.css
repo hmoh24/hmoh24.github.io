@@ -1,0 +1,252 @@
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+
+
+
+html {
+    background-color: #cad2c5;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+h1 {
+    color: #ffffff;
+    font-size: 70px;
+}
+
+#header {
+    background-color:#354f52;
+    height: 100px;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+}
+
+
+#cardHolder {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#bookInserter{
+    background-color: #52796f;
+    border: none;
+    box-shadow: 0px 0px 10px rgb(177, 175, 175);
+    color: white;
+    font-weight: bolder;
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    position: absolute;
+    right:0;
+    top:0;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+.card {
+    background: rgb(132,169,140);
+    background: linear-gradient(0deg, rgba(132,169,140,1) 0%, rgba(202,210,197,1) 100%);
+    border: 2px solid #354f52;
+    padding: 4px;
+    margin: 15px;
+    width: 300px;
+    height: 375px;
+    box-shadow: 0px 0px 10px rgb(85, 78, 78);
+    display:flex;
+    flex-direction: column;
+    position: relative;
+    flex-wrap: wrap;
+}
+
+#formHolder {
+  height: auto;
+  width: 300px;
+  background-color: white ;
+  visibility: visible;
+  box-shadow: 0px 0px 10px rgb(177, 175, 175);
+  padding: 15px;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  top: 250px;
+  left: 0;
+  right: 0;
+  display: none;
+  z-index: 99;
+}
+
+h2{
+  color: #84a98c; 
+  margin-bottom: 15px;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+}
+
+input {
+  border: 1px solid rgb(235, 232, 232);
+  margin-bottom: 15px;
+}
+
+input[type='radio'] {
+  position: absolute;
+  right: 190px;
+}
+
+
+label {
+  color: rgb(182, 180, 180);
+}
+
+#readStatus {
+  margin-bottom: 10px;
+}
+
+#formSubmit {
+  width: 250px;
+  background-color:#84a98c;
+  border: none;
+  color: white;
+  border-radius: 3px;
+  margin-top: 10px;
+  font-weight: bolder;
+  padding: 5px;
+}
+
+input:focus, button:focus {
+  outline: none;
+  box-shadow: 0px 0px 3px rgb(177, 175, 175);
+}
+
+p {
+  color: darkslategray;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  margin-bottom: 10px;
+}
+
+.title-p {
+  font-weight: bolder;
+  font-size: 20px;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+hr {
+  width: 287px;
+  height: 1px;
+  color:rgb(243, 239, 241);
+  border: 1px solid rgb(224, 226, 224);
+}
+
+button:nth-last-of-type(1) {
+  font-size: 20px;
+  width: 130px;
+  border: none;
+  position: absolute;
+  right:10px;
+  bottom:10px;
+  color: white;
+  border-radius: 4px;
+}
+
+button:nth-last-of-type(2) {
+  font-size: 20px;
+  width: 130px;
+  border: none;
+  position: absolute;
+  left:10px;
+  bottom:10px;
+  color:red;
+  border-radius: 4px;
+}
+
+#deleteForm {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 0;
+  top:0;
+  background-color: rgb(252, 174, 155);
+  border-radius: 0px;
+}
