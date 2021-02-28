@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head><meta charset="utf-8"><link rel='stylesheet' href='tictactoe.css'></head>
+    <body>
+        <div id='hiddenDiv'>
+            <div id='titleHolder'>
+                <h1 id='title'>Tic-Tac-Toe</h1>
+            </div>
+            <div id='player1Info'>
+                <div class='scoreboardHeader'>
+                    <h2 id='player1Title'></h2>
+                </div>
+                <p id='player1Writing'>0</p>
+            </div>
+            <div id='boardHolder'>
+                <div class='board' id='0'></div>
+                <div class='board' id='1'></div>
+                <div class='board' id='2'></div>
+                <div class='board' id='3'></div>
+                <div class='board' id='4'></div>
+                <div class='board' id='5'></div>
+                <div class='board' id='6'></div>
+                <div class='board' id='7'></div>
+                <div class='board' id='8'></div>
+            </div>
+            <div id='player2Info'>
+                <div class='scoreboardHeader'>
+                    <h2 id='player2Title'></h2>
+                </div>
+                <p id='player2Writing'>0</p>
+            </div>
+            <div id='boardButtons'>
+                <button id='nextRoundButton'>Next Round</button>
+                <button id='newGameButton'>New Game</button>
+            </div>
+        </div>
+        <form>
+            <div id='start'>
+                <div id='part1'>
+                    <h2>Player 1</h2>
+                    <label for='player1Text'>Please type in your name:</label>
+                    <input type='text' id='player1Text' maxlength="10" required>
+                    <label >Choose marker:</label>
+                    <div class='buttonHolder'>
+                        <button id ='player1ChooseX'>X</button>
+                        <button id ='player1ChooseO'>O</button>
+                    </div>
+                </div>
+                <div id='part2'>
+                    <h2>Player 2</h2>
+                    <label for='player2Text'>Please type in your name:</label>
+                    <input type='text' id='player2Text' maxlength="10" required>
+                    <label >Choose marker:</label>
+                    <div class='buttonHolder'>
+                        <button type='button' id ='player2ChooseX'>X</button>
+                        <button type='button' id ='player2ChooseO'>O</button>
+                    </div>
+                </div>
+                <div id='submitHolder'>
+                    <button type='submit' id='submit'>Start</button>
+                </div> 
+            </div>
+        </form>
+       
+    </body>
+</html>
+<script src="tictactoe.js"></script>
